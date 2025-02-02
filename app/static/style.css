@@ -1,0 +1,137 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #121212;
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+}
+
+.purple {
+    color: #4361ee;
+}
+
+.flex {
+    display: flex;
+    color: #0a2159;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.jsplit {
+    justify-content: space-between;
+}
+
+.gap {
+    gap: 10px;
+}
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 20px;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #222222;
+    padding: 20px;
+    border-radius: 5px;
+    /* flex-grow: 1; */
+    flex-shrink: 0;
+    width: 300px;
+}
+
+.light {
+    opacity: 0.5;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-split {
+    justify-content: space-between;
+}
+
+
+.fill-height {
+    flex-grow: 1;
+}
+
+.fill-width {
+    width: 100%;
+}
+
+#card_form{
+    color: #498e91;
+}
+
+.box {
+    background-color: #222222;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+
+.short-description {
+    font-weight: 400;
+    color: rgb(3, 22, 1);
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+}
+
+.star-rating .fa-star {
+    color: #ffd700;
+}
+.star-rating .fa-star-half-alt {
+    color: #ffd700;
+}
+
+.aButton {
+    background-color: #4361ee;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.warning {
+    background-color: #ee4361;
+}
+.registrarSection{
+    background-color: #0a2159;
+}

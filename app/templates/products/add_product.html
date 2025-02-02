@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container px-4">
+            <a class="navbar-brand flex jsplit fw-bolder" href="/">{{shopname}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav ms-auto">
+  
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('get_products') }}" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">All products</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('register') }}" class="nav-link">Register</a>
+                    </li class="nav-item">
+                    <li>
+                      <span class="light">Logged in as {{user.username}}</span>
+                      <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                    </li>
+                    
+                </ul>
+                <form class="d-flex ms-5">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="fa fa-shopping-cart me-1" style="color: rgb(59, 5, 5);"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add product -->
+
+    <div class="container fill-height">
+        <div class="content flex col-10">
+            <div class="box flex column">
+                <h1 class="purple">Add Product</h1>
+                <form action="{{ url_for('add_product') }}" method="POST">
+                    <div class="form-group">
+                        <label for="title">{{product.title}}:</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">{{product.price}}:</label>
+                        <input type="number" class="form-control" id="price" name="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">{{product.category}}:</label>
+                        <input type="text" class="form-control" id="category" name="category" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">{{product.description}}:</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">{{product.image}}:</label>
+                        <input type="text" class="form-control" id="image" name="image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+</body>
+</html>

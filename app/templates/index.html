@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{shopname}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com ">
+    <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' %}
+
+    {% block styles %}{% endblock %}
+
+    <!-- Body Content -->
+    {% block body %}
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Comprar en la tienda de TShop</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Con este Shop puedes encontrar todos los productos</p>
+                <span>Dessarollado por Teddy !</span>
+            </div>
+        </div>
+    </header>
+    
+    <section class="featured-products my-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <h2 class="text-center mb-4" style="color: #10111a;">Produits en vedette</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for product in products %}
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        {% if product.image %}
+                            <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title|default('Produit') }}" style="align-items: center; height: 200px; object-fit: contain; padding: 1rem;">
+                        {% else %}
+                            <div class="card-img-top bg-light text-center py-5">Image non disponible</div>
+                        {% endif %}
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bolder">{{ product.title|default('Titre non disponible') }} {% if product.title|length > 10 %}...{% endif %} </h5>
+                            <span><p class="card-text short-description" style="font-size: 12px;">{{product.description[:45]}}{% if product.description|length > 20 %}...{% endif %}</p></span>
+                            <div class="star-rating mb-2">
+                                {% set rating = product.rating_rate|default(0) %}
+                                {% for i in range(5) %}
+                                    {% if rating >= i + 1 %}
+                                        <i class="fas fa-star"></i>
+                                    {% elif rating > i %}
+                                        <i class="fas fa-star-half-alt"></i>
+                                    {% else %}
+                                        <i class="far fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                                <span class="ms-2">({{ product.rating_count|default(0) }})</span>
+                            </div>
+                            <p class="card-text" style="font-size: 18px; font-weight: bold; color: rgb(3, 2, 53);">{{ product.price|default('Prix non disponible') }} €</p>
+                            {% if product.id %}
+                                <a href="#" class="btn btn-primary">Voir détails</a>
+                            {% else %}
+                                <button class="btn btn-secondary" disabled>Détails non disponibles</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-12">
+                    <p>Aucun produit disponible pour le moment.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+    <section class="categories bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4" style="color: #10111a;">Catégories</h2>
+            <div class="row">
+                {% for category in categories %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ category.name }}</h5>
+                            <a href="{{ url_for('products.category_products', category_id=category.id) }}" class="btn btn-outline-primary">Explorer</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+    <section class="promotions my-5">
+        <div class="container">
+            <h2 class="text-center mb-4" style="color: #10111a;">Promotions</h2>
+            <div class="row">
+                {% for product in promotional_products %}
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text"><del>{{ product.original_price }} €</del> {{ product.price }} €</p>
+                            <a href="{{ url_for('products.product_detail', id=product.id) }}" class="btn btn-danger">Voir l'offre</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+    <!-- Footer -->
+    {% include 'includes/footer.html' %}
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
