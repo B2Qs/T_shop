@@ -1,8 +1,0 @@
-Flask
-Flask-SQLAlchemy
-sqlalchemy
-flask-login
-flask-wtf 
-email_validator
-requests
-Flask-Migrate

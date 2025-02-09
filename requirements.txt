@@ -1,0 +1,11 @@
+Flask
+Flask-SQLAlchemy
+sqlalchemy
+flask-login
+flask-wtf 
+email_validator
+requests
+libsass
+flask-assets 
+Flask-Migrate
+python-dotenv

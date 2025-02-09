@@ -1,55 +1,59 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-    <div class="container px-4">
-        <a class="navbar-brand flex jsplit fw-bolder" href="{{ url_for('main.index') }}">{{shopname}}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav ms-auto">
+  <div class="container px-4">
+    <a class="navbar-brand flex jsplit fw-bolder" href="{{ url_for('main.index') }}">{{shopname}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav ms-auto">
 
-                <li class="nav-item">
-                    <a href="{{ url_for('main.index') }}" class="nav-link active" aria-current="page">Home</a>
-                </li>
-                <li class="nav-item">
+        <li class="nav-item">
+          <a href="{{ url_for('main.index') }}" class="nav-link active" aria-current="page">Home</a>
+        </li>
+        <!-- <li class="nav-item">
                     <a href="{{ url_for('products.get_products') }}" class="nav-link">Products</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Shop
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a href="{{ url_for('products.get_products') }}" class="nav-link">Products</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#">New Arrivals</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
-                </li>
-                {% if current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Déconnexion</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.login') }}">Connexion</a>
-                        <span class="visually-hidden"> Logged in as {{ current_user.username }} </span>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.register') }}">Inscription</a>
-                    </li>
-                {% endif %}
-                
-            </ul>
-            <form class="d-flex ms-5">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="fa fa-shopping-cart me-1" style="color: rgb(59, 5, 5);"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
-        </div>
+                </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Shop
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a href="{{ url_for('products.get_products') }}" class="nav-link">Products</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Popular Items</a></li>
+            <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">About</a>
+        </li>
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <span class="visually-hidden"> Logged in as {{ current_user.username }} </span>
+          <a class="nav-link" href="{{ url_for('auth.logout') }}">Déconnexion</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('auth.login') }}">Connexion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('auth.register') }}">Inscription</a>
+        </li>
+        {% endif %}
+
+      </ul>
+      <form class="d-flex ms-5">
+        <button class="btn btn-outline-dark" type="submit">
+          <i class="fa fa-shopping-cart me-1" style="color: rgb(59, 5, 5);"></i>
+          Cart
+          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+        </button>
+      </form>
     </div>
+  </div>
 </nav>
